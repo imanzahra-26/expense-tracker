@@ -1,0 +1,576 @@
+/* ============================================
+   GLOBAL STYLES — Pastel gradient theme
+   ============================================ */
+
+/* Reset: remove default margins + paddings */
+* {
+  margin: 0;                    /* No outer spacing */
+  padding: 0;                   /* No inner spacing */
+  box-sizing: border-box;       /* Padding included in width/height */
+}
+
+/* Body: base font + soft background */
+body {
+  font-family: 'Inter', -apple-system, sans-serif;          /* Clean sans-serif */
+  background: linear-gradient(135deg, #f5f7fa 0%, #fafbfc 100%); /* Soft gradient */
+  color: #1f2937;                                            /* Dark slate text */
+  min-height: 100vh;                                         /* Full viewport height */
+}
+
+/* ============================================
+   AUTH PAGES (Login / Register)
+   ============================================ */
+
+/* Full-screen centered wrapper */
+.auth-page {
+  min-height: 100vh;                  /* Fills screen */
+  display: flex;                      /* Flex layout */
+  align-items: center;                /* Vertical center */
+  justify-content: center;            /* Horizontal center */
+  padding: 20px;                      /* Space on small screens */
+}
+
+/* White card */
+.auth-card {
+  width: 100%;                        /* Responsive */
+  max-width: 420px;                   /* Max width */
+  background: #ffffff;                /* White bg */
+  padding: 40px 32px;                 /* Inner spacing */
+  border-radius: 20px;                /* Rounded corners */
+  box-shadow: 0 10px 40px rgba(99, 102, 241, 0.08); /* Soft indigo shadow */
+}
+
+/* Card heading with gradient text */
+.auth-card h1 {
+  font-size: 26px;                    /* Size */
+  margin-bottom: 6px;                 /* Space below */
+  background: linear-gradient(135deg, #6366f1, #ec4899); /* Indigo → pink */
+  background-clip: text;              /* Standard property */
+  -webkit-background-clip: text;      /* Clip bg to text shape */
+  -webkit-text-fill-color: transparent; /* Show gradient through text */
+}
+
+/* Subtitle under heading */
+.subtitle {
+  color: #6b7280;                     /* Gray */
+  margin-bottom: 24px;                /* Space below */
+  font-size: 14px;                    /* Small */
+}
+
+/* Form: stack fields vertically */
+form {
+  display: flex;                      /* Flex */
+  flex-direction: column;             /* Vertical */
+  gap: 16px;                          /* Space between fields */
+}
+
+/* Each label + input pair */
+label {
+  display: flex;                      /* Flex */
+  flex-direction: column;             /* Label above input */
+  font-size: 13px;                    /* Small label */
+  font-weight: 600;                   /* Semi-bold */
+  color: #374151;                     /* Dark gray */
+  gap: 6px;                           /* Space between label text + input */
+}
+
+/* Inputs */
+input {
+  padding: 12px 14px;                 /* Comfortable */
+  border: 1.5px solid #e5e7eb;        /* Light border */
+  border-radius: 10px;                /* Rounded */
+  font-size: 14px;                    /* Readable */
+  outline: none;                      /* Remove default outline */
+  transition: border-color 0.2s;      /* Smooth focus */
+  font-family: inherit;               /* Use parent font */
+}
+
+/* Focused input */
+input:focus {
+  border-color: #6366f1;              /* Indigo border */
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1); /* Soft glow */
+}
+
+/* Buttons (main gradient) */
+button {
+  padding: 12px;                      /* Padding */
+  background: linear-gradient(135deg, #6366f1, #ec4899); /* Gradient */
+  color: white;                       /* Text color */
+  border: none;                       /* No border */
+  border-radius: 10px;                /* Rounded */
+  font-size: 15px;                    /* Size */
+  font-weight: 600;                   /* Bold */
+  cursor: pointer;                    /* Pointer on hover */
+  transition: transform 0.15s, box-shadow 0.2s; /* Smooth */
+  font-family: inherit;               /* Same font */
+}
+
+/* Button hover (not disabled) */
+button:hover:not(:disabled) {
+  transform: translateY(-1px);        /* Lift slightly */
+  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3); /* Glow */
+}
+
+/* Disabled button */
+button:disabled {
+  opacity: 0.6;                       /* Dim */
+  cursor: not-allowed;                /* Show not-allowed */
+}
+
+/* Error box */
+.error-box {
+  background: #fee2e2;                /* Light red */
+  color: #b91c1c;                     /* Dark red text */
+  padding: 10px 14px;                 /* Padding */
+  border-radius: 8px;                 /* Rounded */
+  font-size: 13px;                    /* Small */
+  margin-bottom: 12px;                /* Space below */
+}
+
+/* Bottom switch text (login ↔ register) */
+.switch {
+  text-align: center;                 /* Center */
+  margin-top: 20px;                   /* Space above */
+  font-size: 14px;                    /* Small */
+  color: #6b7280;                     /* Gray */
+}
+
+/* Link inside switch */
+.switch a {
+  color: #6366f1;                     /* Indigo */
+  font-weight: 600;                   /* Bold */
+  text-decoration: none;              /* No underline */
+}
+
+/* ============================================
+   DASHBOARD (basic for now)
+   ============================================ */
+
+/* Dashboard wrapper */
+.dashboard {
+  padding: 30px;                      /* Inner spacing */
+  max-width: 1200px;                  /* Max width */
+  margin: 0 auto;                     /* Center horizontally */
+}
+
+/* Dashboard header row */
+.dash-header {
+  display: flex;                      /* Flex */
+  justify-content: space-between;     /* Left + right */
+  align-items: center;                /* Vertically centered */
+  margin-bottom: 24px;                /* Space below */
+}
+
+/* Logout button (smaller variant) */
+.logout-btn {
+  padding: 8px 16px;                  /* Smaller padding */
+  font-size: 13px;                    /* Smaller text */
+  width: auto;                        /* Natural width */
+}
+/* ============================================
+   DASHBOARD — Stats + Charts
+   ============================================ */
+
+/* Loading text */
+.loading {
+  text-align: center;                    /* Center it */
+  color: #6b7280;                        /* Gray */
+  padding: 40px;                         /* Space around */
+}
+
+/* Stats row: 3 cards side-by-side */
+.stats-row {
+  display: grid;                         /* Grid layout */
+  grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+  gap: 20px;                             /* Space between */
+  margin-bottom: 30px;                   /* Space below */
+}
+
+/* Responsive: stack on small screens */
+@media (max-width: 768px) {
+  .stats-row {
+    grid-template-columns: 1fr;          /* 1 column */
+  }
+}
+
+/* Single stat card */
+.stat-card {
+  background: #ffffff;                   /* White bg */
+  padding: 22px 24px;                    /* Inner spacing */
+  border-radius: 16px;                   /* Rounded */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04); /* Soft shadow */
+  border-left: 4px solid #6366f1;        /* Accent (overridden below) */
+  transition: transform 0.2s;            /* Smooth hover */
+}
+
+/* Card hover — lift slightly */
+.stat-card:hover {
+  transform: translateY(-2px);           /* Lift */
+}
+
+/* Color variants — the left border */
+.stat-green  { border-left-color: #10b981; } /* Green */
+.stat-red    { border-left-color: #ef4444; } /* Red */
+.stat-indigo { border-left-color: #6366f1; } /* Indigo */
+
+/* Top row inside card */
+.stat-top {
+  display: flex;                         /* Flex */
+  justify-content: space-between;        /* Left + right */
+  align-items: center;                   /* Center vertically */
+  margin-bottom: 10px;                   /* Space below */
+}
+
+/* Small label */
+.stat-label {
+  font-size: 13px;                       /* Small */
+  color: #6b7280;                        /* Gray */
+  font-weight: 600;                      /* Semi-bold */
+  text-transform: uppercase;             /* ALL CAPS */
+  letter-spacing: 0.5px;                 /* Slight spacing */
+}
+
+/* Icon (emoji) */
+.stat-icon {
+  font-size: 22px;                       /* Bigger */
+}
+
+/* Big value */
+.stat-value {
+  font-size: 24px;                       /* Big number */
+  font-weight: 700;                      /* Bold */
+  color: #1f2937;                        /* Dark text */
+}
+
+/* Charts row wrapper */
+.charts-row {
+  display: grid;                         /* Grid */
+  grid-template-columns: 1fr;            /* Full width for now */
+  gap: 20px;                             /* Space between charts */
+  margin-bottom: 30px;                   /* Space below */
+}
+
+/* Chart card */
+.chart-card {
+  background: #ffffff;                   /* White */
+  padding: 24px;                         /* Padding */
+  border-radius: 16px;                   /* Rounded */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04); /* Soft shadow */
+}
+
+/* Chart card title */
+.chart-card h3 {
+  font-size: 16px;                       /* Size */
+  margin-bottom: 16px;                   /* Space below */
+  color: #1f2937;                        /* Dark */
+}
+
+/* Empty state inside chart card */
+.chart-card .empty {
+  text-align: center;                    /* Center */
+  color: #9ca3af;                        /* Light gray */
+  padding: 40px 20px;                    /* Space */
+  font-size: 14px;                       /* Small */
+}
+/* ============================================
+   NAVBAR
+   ============================================ */
+.navbar {
+  display: flex;                          /* Flex layout */
+  justify-content: space-between;         /* Spread across */
+  align-items: center;                    /* Center vertically */
+  padding: 14px 30px;                     /* Space */
+  background: #ffffff;                    /* White */
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04); /* Soft bottom shadow */
+  position: sticky;                       /* Stick to top */
+  top: 0;                                 /* Stick position */
+  z-index: 100;                           /* Above content */
+}
+
+.brand {
+  font-weight: 700;                       /* Bold */
+  font-size: 18px;                        /* Bigger */
+  text-decoration: none;                  /* No underline */
+  background: linear-gradient(135deg, #6366f1, #ec4899); /* Gradient */
+  background-clip: text;                    /* Clip */
+  -webkit-background-clip: text;          /* Clip */
+  -webkit-text-fill-color: transparent;   /* Text gradient */
+}
+
+.nav-links {
+  display: flex;                          /* Horizontal */
+  gap: 8px;                               /* Space between */
+}
+
+.nav-links a {
+  padding: 8px 14px;                      /* Space inside */
+  border-radius: 8px;                     /* Rounded */
+  text-decoration: none;                  /* No underline */
+  color: #4b5563;                         /* Gray text */
+  font-weight: 500;                       /* Medium */
+  font-size: 14px;                        /* Small */
+  transition: all 0.2s;                   /* Smooth */
+}
+
+.nav-links a:hover {
+  background: #f3f4f6;                    /* Light gray hover */
+}
+
+.nav-links a.active {
+  background: linear-gradient(135deg, #6366f1, #ec4899); /* Gradient */
+  color: white;                           /* White text */
+}
+
+.nav-right {
+  display: flex;                          /* Flex */
+  align-items: center;                    /* Center */
+  gap: 12px;                              /* Space */
+}
+
+.nav-user {
+  font-size: 14px;                        /* Small */
+  color: #6b7280;                         /* Gray */
+  font-weight: 500;                       /* Medium */
+}
+
+/* ============================================
+   PAGE LAYOUT
+   ============================================ */
+.page-container {
+  max-width: 1200px;                      /* Max width */
+  margin: 0 auto;                         /* Center */
+  padding: 30px;                          /* Inner spacing */
+}
+
+.page {
+  width: 100%;                            /* Full width */
+}
+
+.page-header {
+  margin-bottom: 24px;                    /* Space below */
+}
+
+.page-header h1 {
+  font-size: 28px;                        /* Size */
+  margin-bottom: 4px;                     /* Space below */
+}
+
+/* ============================================
+   FORM + LIST CARDS
+   ============================================ */
+.form-card,
+.list-card {
+  background: #ffffff;                    /* White */
+  padding: 24px;                          /* Spacing */
+  border-radius: 16px;                    /* Rounded */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04); /* Soft shadow */
+  margin-bottom: 24px;                    /* Space below */
+}
+
+.form-card h2,
+.list-card h2 {
+  font-size: 18px;                        /* Size */
+  margin-bottom: 16px;                    /* Space below */
+  color: #1f2937;                         /* Dark */
+}
+
+/* Select input */
+select {
+  padding: 12px 14px;                     /* Spacing */
+  border: 1.5px solid #e5e7eb;            /* Border */
+  border-radius: 10px;                    /* Rounded */
+  font-size: 14px;                        /* Size */
+  outline: none;                          /* No outline */
+  font-family: inherit;                   /* Same font */
+  background: white;                      /* White */
+  cursor: pointer;                        /* Pointer */
+}
+
+select:focus {
+  border-color: #6366f1;                  /* Indigo */
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1); /* Glow */
+}
+
+/* Form button row */
+.form-buttons {
+  display: flex;                          /* Flex */
+  gap: 10px;                              /* Space */
+}
+
+/* Cancel button */
+.btn-cancel {
+  background: #f3f4f6;                    /* Gray */
+  color: #374151;                         /* Dark text */
+}
+
+.btn-cancel:hover {
+  background: #e5e7eb;                    /* Darker gray */
+}
+
+/* ============================================
+   DATA TABLE
+   ============================================ */
+.data-table {
+  width: 100%;                            /* Full width */
+  border-collapse: collapse;              /* No double borders */
+}
+
+.data-table th,
+.data-table td {
+  padding: 12px 10px;                     /* Spacing */
+  text-align: left;                       /* Left align */
+  border-bottom: 1px solid #f0f0f0;       /* Light bottom border */
+  font-size: 14px;                        /* Size */
+}
+
+.data-table th {
+  color: #6b7280;                         /* Gray */
+  font-weight: 600;                       /* Semi-bold */
+  text-transform: uppercase;              /* Caps */
+  font-size: 11px;                        /* Smaller */
+  letter-spacing: 0.5px;                  /* Space between letters */
+}
+
+.data-table .right {
+  text-align: right;                      /* Right align */
+}
+
+/* Category pill */
+.pill {
+  display: inline-block;                  /* Inline box */
+  padding: 4px 10px;                      /* Space */
+  border-radius: 12px;                    /* Rounded */
+  background: #eef2ff;                    /* Light indigo */
+  color: #4f46e5;                         /* Indigo text */
+  font-size: 12px;                        /* Small */
+  font-weight: 600;                       /* Bold */
+}
+
+/* Edit / Delete buttons */
+.btn-edit,
+.btn-delete {
+  padding: 6px 12px;                      /* Small */
+  font-size: 12px;                        /* Small */
+  border-radius: 6px;                     /* Rounded */
+  margin-left: 6px;                       /* Space */
+  width: auto;                            /* Auto width */
+}
+
+.btn-edit {
+  background: #eef2ff;                    /* Light indigo */
+  color: #4f46e5;                         /* Indigo */
+}
+.btn-edit:hover {
+  background: #e0e7ff;                    /* Darker */
+}
+
+.btn-delete {
+  background: #fee2e2;                    /* Light red */
+  color: #b91c1c;                         /* Red */
+}
+.btn-delete:hover {
+  background: #fecaca;                    /* Darker red */
+}
+
+/* ============================================
+   RECENT TRANSACTIONS
+   ============================================ */
+.tx-list {
+  list-style: none;                       /* No bullets */
+}
+
+.tx-item {
+  display: flex;                          /* Flex */
+  justify-content: space-between;         /* Spread */
+  align-items: center;                    /* Center */
+  padding: 12px 0;                        /* Vertical */
+  border-bottom: 1px solid #f0f0f0;       /* Border */
+}
+
+.tx-item:last-child {
+  border-bottom: none;                    /* Remove last border */
+}
+
+.tx-left {
+  display: flex;                          /* Flex */
+  align-items: center;                    /* Center */
+  gap: 12px;                              /* Space */
+}
+
+.tx-icon {
+  font-size: 20px;                        /* Emoji size */
+}
+
+.tx-title {
+  font-weight: 600;                       /* Bold */
+  font-size: 14px;                        /* Size */
+}
+
+.tx-meta {
+  font-size: 12px;                        /* Small */
+  color: #9ca3af;                         /* Gray */
+}
+
+.tx-amount {
+  font-weight: 700;                       /* Bold */
+  font-size: 14px;                        /* Size */
+}
+
+.tx-income .tx-amount {
+  color: #10b981;                         /* Green for income */
+}
+
+.tx-expense .tx-amount {
+  color: #ef4444;                         /* Red for expense */
+}
+
+/* ============================================
+   DASHBOARD — two-column charts
+   ============================================ */
+.charts-row.two-cols {
+  grid-template-columns: 1fr 1fr;         /* Two columns */
+}
+
+@media (max-width: 900px) {
+  .charts-row.two-cols {
+    grid-template-columns: 1fr;           /* Stack on small */
+  }
+}
+/* ============================================
+   INCOME PILL (green variant)
+   ============================================ */
+.pill-green {
+  background: #d1fae5;                    /* Light green */
+  color: #065f46;                         /* Dark green */
+}
+
+/* ============================================
+   POLISH — Button hover & consistency
+   ============================================ */
+
+/* All action buttons share rounded corners */
+.btn-edit,
+.btn-delete,
+.btn-cancel {
+  transition: background 0.2s;            /* Smooth hover */
+}
+
+/* Mobile responsiveness for tables */
+@media (max-width: 640px) {
+  .data-table th:nth-child(3),            /* Hide Date column on mobile */
+  .data-table td:nth-child(3) {
+    display: none;                        /* Simplify view */
+  }
+  
+  .navbar {
+    flex-wrap: wrap;                      /* Allow wrap on small screens */
+    gap: 10px;
+    padding: 12px 16px;
+  }
+  
+  .nav-links {
+    order: 3;                             /* Push links to bottom row */
+    width: 100%;
+    justify-content: center;
+  }
+}
